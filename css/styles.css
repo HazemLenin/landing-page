@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: calc(1rem + 0.5vw);
+	font-family: sans-serif;
+	scroll-behavior: smooth;
+}
+
+body {
+	background: linear-gradient(to right, purple, blue);
+	color: white;
+}
+
+main,
+header {
+	padding: 0 96px;
+}
+
+main {
+	padding-top: 132px;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100vw;
+	height: 100px;
+	background: white;
+	color: black;
+	position: fixed;
+}
+
+header > nav {
+	height: 100%;
+}
+
+header > nav > ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	height: 100%;
+}
+
+header > nav > ul > li {
+	height: 100%;
+}
+
+button.nav-btn {
+	border: none;
+	background: none;
+	cursor: pointer;
+	height: 100%;
+	font-size: 0.8rem;
+	transition: all 0.3s;
+}
+
+button.nav-btn:hover {
+	background: darkblue;
+	color: white;
+}
+
+section {
+	padding: 40px;
+	border-radius: 25px;
+	transition: all 0.3s;
+}
+
+section.active {
+	background: darkblue;
+}
