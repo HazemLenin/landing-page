@@ -1,9 +1,9 @@
-let nanvBar = document.getElementById("navbar");
-let sections = document.getElementsByTagName("section");
+let nanvBar = document.getElementById('navbar');
+let sections = document.getElementsByTagName('section');
 
 // Fill the navbar
 for (let section of sections) {
-	let title = section.getAttribute("data-title");
+	let title = section.getAttribute('data-title');
 	nanvBar.innerHTML += `
         <li>
             <button class="nav-btn" data-section="${title}">${title}</button>
@@ -11,36 +11,33 @@ for (let section of sections) {
     `;
 }
 
-let buttons = document.getElementsByClassName("nav-btn");
+// get created navbar buttons and add click listeners to them
+let buttons = document.getElementsByClassName('nav-btn');
 
 for (let button of buttons) {
-	button.addEventListener("click", () => {
+	button.addEventListener('click', () => {
 		for (let section of sections) {
-			if (
-				section.getAttribute("data-title") ===
-				button.getAttribute("data-section")
-			) {
-				section.scrollIntoView();
+			 // Scroll into the specefix section with the same title
+			if (section.getAttribute('data-title') === button.getAttribute('data-section')) {
+				section.scrollIntoView({behavior: 'smooth'});
 			}
 		}
 	});
 }
 
-// add scroll event listener to set active state
-window.addEventListener("scroll", () => {
+// Add active class to sections in the viewport
+window.addEventListener('scroll', () => {
 	for (let section of sections) {
-		let size = section.getBoundingClientRect();
+		let rect = section.getBoundingClientRect();
 		let viewportHeight = window.innerHeight;
 		if (
-			size.top > 0 &&
-			size.bottom > 0 &&
-			size.bottom <= viewportHeight + size.height
+			(rect.top >= 0 && rect.top <= viewportHeight) && // if top is in the viewport 
+			(rect.bottom <= viewportHeight && rect.bottom >= 0) && // if bottom is in the viewport
+			!section.classList.contains('active') // if the section isn't active
 		) {
-			if (!section.classList.contains("active")) {
-				section.classList.add("active");
-			}
+			section.classList.add('active');
 		} else {
-			section.classList.remove("active");
+			section.classList.remove('active');
 		}
 	}
 });
