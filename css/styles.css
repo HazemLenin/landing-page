@@ -13,16 +13,11 @@
 html {
 	font-size: calc(1rem + 0.5vw);
 	font-family: sans-serif;
-
 }
 
 body {
 	background: linear-gradient(to right, purple, blue);
 	color: white;
-}
-
-p {
-	line-height: 1.5rem;
 }
 
 main,
